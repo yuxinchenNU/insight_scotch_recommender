@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+     <title>ScotchBot</title>
+  <meta charset="utf-8">
+  <meta name="viewport" c   ontent="width=device-width, initial-scale=1">
+  <meta name="description" content="ScotchBot">
+  <meta name="author"      content="Richard F Obrecht">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../static/css/custom.css" >
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  <!-- Custom styles for this template -->
+  <!--link href="./starter-template.css" rel="stylesheet"> -->
+    <link href="../static/css/starter-template.css" rel="stylesheet"> 
+  </head>
+
+<body>
+  
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+              <a class="navbar-brand" href="/" ><b><font size=5>ScotchBot</b></font></a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="/"> <font size=4> Home </font> </a></li>
+                    <li><a href="/about"> <font size=4>  About </font> </a></li>
+                    <li><a href="/contact"><font size=4>  Contact </font> </a></li>
+                    <li><a href="http://insightdatascience.com/"> <font size=4>  Insight </font> </a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+ 
+ 
+ 
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+   
+      <div class="item active">        
+        	<img src="/static/images/logo.png">
+            <div class="carousel-caption">
+              <h2><b>ScotchBot</b><br> <font size=4> Your Scotch shopping companion</font></h2>
+              <p></p>
+            </div>      
+          </div>
+
+      <div class="item">
+        <img src="/static/images/logo.png">
+        <div class="carousel-caption">
+          <h2><b>ScotchBot</b><br> <font size=4> Your Scotch shopping companion </font></h2>
+          <p></p>
+        </div>      
+      </div>
+      
+      <div class="item">
+        <img src="/static/images/logo.png">
+        <div class="carousel-caption">
+          <h2><b>ScotchBot</b><br> <font size=4> Your Scotch shopping companion </font></h2>
+          <p></p>
+        </div>      
+      </div>
+   
+   </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+</div> <!--end of carousel > --> 
+ 
+  <style type="text/css">
+            dummydeclaration { padding-left: 4em; }
+            tab0 { padding-left: 1em; } 
+            tab1 { padding-left: 2em; } 
+            tab2 { padding-left: 3em; }
+            tab3 { padding-left: 4em; }
+            tab4 { padding-left: 5em; }
+            tab5 { padding-left: 6em; }
+            tab6 { padding-left: 7em; }
+            tab7 { padding-left: 8em; }
+            tab8 { padding-left: 9em; }
+        </style>
+
+  
+    <div class="starter-template">
+      <h3>Enter your information</h3>
+        <br> <br>
+      <form  action="/output" method="GET">
+       <div class="form-group">
+
+    	  <br><br>
+
+    	  <label for="Enter your favorite Scotch characteristics" > <font size=2> Enter your favorite Scotch characteristics : &nbsp;</font> </label>
+          <tab2><input type="text" id="Scotch characteristics" name='Scotch characteristics'
+         placeholder="eg. fruity"></tab2>  
+        <br><br>
+
+    	  <label for="Pick your favorite Scotch product"> <font size=2> Your favorite Scotch product: &nbsp;&nbsp;</font> </label>
+    	  <tab> <select name="tracking_type">
+    	      <option value="r1">Glenlivet 18 Year Old/option>
+	      <option value="r2">Bowmore Small Batch</option>
+    	    </select>
+	  </tab>
+    	  <br><br>	     
+          <button type="enter" class="btn btn-info btn-lg"> Enter</button>
+    </div>
+     
+      </form>
+  
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+
+    </div> <!-- /.container-->
+
+  <br>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>Copyright &copy; ScotchBot</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </footer>
+
+    
+  <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!-- <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
+    <script src="../static/js/bootstrap.min.js"></script>
+</body>
+</html>
