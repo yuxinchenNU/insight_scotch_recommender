@@ -1,16 +1,14 @@
-#!/usr/bin/env python -W ignore::DeprecationWarning
 import re
 import numpy as np
 from numpy import linalg as LA
 import scipy.sparse as sp
 import pandas as pd
-from pprint import pprint
 from time import time  # To time our operations
 from random import randint
 from scipy.sparse import csr_matrix
 from scipy.sparse import coo_matrix
 
-# Import the model
+# Import lightFM model
 from lightfm import LightFM
 from lightfm.data import Dataset
 from lightfm.evaluation import auc_score
@@ -56,7 +54,10 @@ def remove_stop_words_text(sentence):
 
 def lemmatization_text(sentence, allowed_postags=['NOUN', 'ADJ', 'VERB', 'ADV']):
 	"""
-
+	function to lemmatize text
+	Args: sentence (str) - sentence to be lemmatized
+	      allowed_postags (list) - allowed words postags
+	Returns: sentence (str) - lemmatized sentence
 	"""
 	# break the sentence into list of tokens using gensim
 	# list_tokens = gensim.utils.simple_preprocess(str(sentence))
@@ -82,6 +83,8 @@ def read_corpus(df, tokens_only=False):
 def create_df_ui(df):
 	"""
 	combine all the reviews for each product
+	Args: df(pandas dataframe) - dataframe that stores all the information
+	Returns: df_ui(pandas dataframe) - dataframe that stores user item interaction
 	"""
 	# obtain a list of reviewer names
 	list_reviewers_name = []
@@ -121,6 +124,7 @@ def create_df_ui(df):
 			avg_rating = str(np.mean([float(rating) for rating in list_ratings]))
 			for k in range(len(list_reviewer_names) - len(list_ratings)):
 				list_ratings.append(avg_rating)
+		# create a dictionary that stores product ratings that a user gives
 		for j in range(len(list_reviewer_names)):
 			reviewer_name = list_reviewer_names[j]
 			subdictionary = dict_name_product[reviewer_name]
@@ -130,20 +134,10 @@ def create_df_ui(df):
 	# read in dict_name_product into a dataframe
 	df_ui = pd.DataFrame.from_dict(dict_name_product, orient='index')
 
-	# remove None product id
-	# df_ui.drop([None], axis=1, inplace=True)
-
-	# drop anonymous ratings
-	# df_ui.drop(['Anonymous'], axis=0, inplace=True)
-
 	# convert entries from string to floating number
 	df_ui = df_ui.apply(pd.to_numeric)
 	# fill nans with 0
 	df_ui = df_ui.fillna(0)
-
-	# change index to product id
-	# df = df.set_index('product ID')
-	# df.drop([None], axis=0, inplace=True)
 	
 	return df_ui
 
@@ -163,16 +157,26 @@ def remove_stop_words_df(df, list_column_names):
 
 def lemmatization_df(df, list_column_names):
 	"""
-	
+	function to lemmatize texts in selected columns in the dataframe df
+	Args: df (pandas dataframe) - dataframe that stores data
+		  list_column_names (list of strings) - list of column names that need to be dealt with
+	Return: df - dataframe where in the specified columns, texts are lemmatized
 	"""
 	for column_name in list_column_names:
 		df[column_name] = df[column_name].apply(lambda sentence: lemmatization_text(sentence))
 		
 	return df
 
-# def bigram_generator(df):
-
 def nlp_preprocess(df, list_column_names):
+	"""
+	function to call helper functions to remove stop words and lemmatize texts in
+	selected columns of the dataframe df
+	Args: df (pandas dataframe) - dataframe that stores data
+		  list_column_names (list of strings) - list of column names that need to be dealt with
+	Return: df - dataframe where in the specified columns, texts are lemmatized
+	"""
+
+
 	# remove stopping words
 	df = remove_stop_words_df(df, list_column_names)
 	
@@ -191,10 +195,18 @@ def generate_df_interaction(df):
 
 
 def df_to_sparseMatrix(df):
+	"""
+	converts dataframe to a sparse matrix
+	"""
 	sp_matrix = coo_matrix(df.values)
 	return sp_matrix
 
 def create_dataset(df, item_features, list_item_features):
+	"""
+	function to create the dataset based on df which stores all the data including
+	features (tags) of each products
+	Args: df(pandas dataframe) - 
+	"""
 	## create a mapping between the user and item ids from our input data 
 	#to indices that will be used internally by the model
 	dataset = Dataset(item_identity_features=True)
