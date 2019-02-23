@@ -23,6 +23,8 @@ Below shows a result
 ## Author
 
 **Yuxin Chen** 
+Contact: yuxinchen0612 AT gmail DOT com
+LinkedIn: yuxin-chen-10
 
 
 ## Acknowledgments
