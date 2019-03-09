@@ -138,15 +138,35 @@ def generate_item_feature_matrix():
 	df_path = 'cleanedDataFrameV2.json'
 	df = pd.read_json(df_path)
 
+	# get price range
+	# first convert to us dollars
+	df['price'] = df['price'].apply(lambda x: x.replace(u'£',''))
+	df['price'] = df['price'].apply(lambda x: x.replace(',',''))
+	df['price'] = df['price'].apply(lambda x: float(x)*1.3)
+
 	tags_list = []
 	# loop through each product
 	item_feature_dict = {}
 	for ind in df.index:
 		reviews = df.loc[ind]['review and tasting notes']
 		feature_list = feature_iterable_construction(reviews, keywords_dict)
+		price = df.loc[ind]['price']
+		if price < 100:
+			feature_list.append('< $100')
+		elif price < 250:
+			feature_list.append('$100 - $250')
+		elif price < 500:
+			feature_list.append('$250 - $500')
+		else:
+			feature_list.append('> $500')
+
 		tags_list.append(feature_list)
 
+
+
 	df['tags'] = tags_list
+
+	print(df.iloc[0]['tags'])
 
 	df.to_json('cleanedDataFrameWithTagsV2.json')
 	print(df.columns.values)

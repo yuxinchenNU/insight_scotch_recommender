@@ -321,7 +321,7 @@ def train_model(df_withtags, df_ui, k):
 	list_item_features = ['soft', 'sweet', 'fruit', 'smoky', 'rich', 'fresh', 'vanilla', 
 	'spice', 'peaty', 'chocolate', 'oak', 'toffee','nut', 'citrus', 'creamy', 'earthy', 
 	'leaf', 'nutmeg', 'cinnamon', 'banana', 'apple', 'pineapple', 'toast', 'sherry',
-	'dry', 'liquoric', 'wood', 'bitter', 'coffee']
+	'dry', 'liquorice', 'wood', 'bitter', 'coffee','< $100', '$100 - $250', '$250 - $500', '> $500']
 
 	dataset, interactions, weights, item_feature_matrix = create_dataset(df_ui, item_features, list_item_features)
 	
@@ -418,7 +418,7 @@ def recommendation(prod_id, chara_list):
 def main():
 	training_driver()
 	# recommendation(15703, ['citrus', 'vanilla', 'sweet'])
-	recommendation(None, ['citrus', 'vanilla', 'sweet'])
+	recommendation(None, ['citrus', 'vanilla', 'sweet', '< $100'])
 	
 
 
