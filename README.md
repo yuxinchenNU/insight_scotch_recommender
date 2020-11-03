@@ -1,6 +1,6 @@
 # ScotchBot: a personalized scotch recommender system
 
-Built a hybrid content-based and collaborative filtering system to recommend scotch to users. Model is deployed on an AWS EC2 instance and the [web app](http://yuxinchen.live) is built using Flask.
+Built a hybrid content-based and collaborative filtering system to recommend scotch to users. Model is deployed on an AWS EC2 instance and the app is built using Flask.
 
 The system incorporates user-item interaction data and item features, such as tasting notes of scotch products, which are incorporated into the traditional matrix factorization algorithm. Therefore it allows suggesting products to new users once they indicate their tasting preferences and recommendint new products.
 
